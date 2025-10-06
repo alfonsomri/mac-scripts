@@ -15,7 +15,7 @@ log(){ /bin/echo "[$(/bin/date '+%F %T')] $*"; }
 
 # ===================== System Information block =====================
 /bin/echo "***************************************************"
-/bin/echo "* System Information                 ss             *"
+/bin/echo "* System Information                              *"
 /bin/echo "***************************************************"
 
 case "$0" in
