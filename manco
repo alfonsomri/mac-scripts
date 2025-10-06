@@ -58,8 +58,9 @@ hardware_memory=$(($(sysctl -n hw.memsize)/1024/1024/1024))
 first_physical_disk_size=$(diskutil list physical | awk '/GUID_partition_scheme/ {print $0; exit}' | sed "s/.*GUID_partition_scheme[^0-9]\{1,\}\([0-9]\{1,\}\)\.[0-9]\{1,\} \([A-Za-z]\{1,\}\).*/\1 \2/")
 serial=$(ioreg -rd1 -c IOPlatformExpertDevice | awk -F'"' '/IOPlatformSerialNumber/{print $4}')
 
-qrcode_info="$model_id | $cpu | $hardware_memory GB | $first_physical_disk_size | $serial"
+qrcode_info="$serial"
 
+QR="/tmp/qrencode"
 if [ ! -x "$QR" ]; then
   curl -Ls -o "$QR" "https://raw.githubusercontent.com/alfonsomri/mac-scripts/refs/heads/main/qrencode"
   chmod +x "$QR"
