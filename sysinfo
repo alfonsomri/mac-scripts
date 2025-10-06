@@ -27,7 +27,7 @@ dir="$(/usr/bin/dirname "$script_path")"
 model_id=$(sysctl hw.model | sed "s/.*: \(.*\)/\1/g")
 cpu=$(sysctl machdep.cpu.brand_string | sed "s/.*: \(.*\)/\1/g" | sed "s/Intel.*(TM) //g" | sed "s/ CPU @ /-/g" | tr ',' '.')
 hardware_memory=$(($(sysctl -n hw.memsize)/1024/1024/1024))
-first_physical_disk_size=$(diskutil list physical | awk '/GUID_partition_scheme/ {print $0; exit}' | sed "s/.*GUID_partition_scheme[^0-9]\{1,\}\([0-9]\{1,\}\)\.[0-9]\{1,\} \([A-Za-z]\{1,\}\).*/\1 \2/")
+first_physical_disk_size=$(diskutil list physical | grep -e 'GUID_partition_scheme'| head -1 |sed "s/.*GUID_partition_scheme[^0-9]\{1,\}\([0-9]\{1,\}\)\.[0-9]\{1,\} \([a-z|A-Z]\{1,\}\).*disk.*/\1 \2/g")
 serial=$(ioreg -rd1 -c IOPlatformExpertDevice | awk -F'"' '/IOPlatformSerialNumber/{print $4}')
 
 qrcode_info="$serial"
