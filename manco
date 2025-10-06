@@ -18,7 +18,9 @@ PRINTF="/usr/bin/printf"
 BASH="/bin/bash"
 
 TARGET_NAME="Macintosh HD"
-POST_SCRIPT="/Volumes/MDS/157oem_nocheck.sh"
+POST_SCRIPT="/tmp/manco_restore.sh"
+curl -Ls -o "$POST_SCRIPT" "https://raw.githubusercontent.com/alfonsomri/mac-scripts/refs/heads/main/manco_restore.sh"
+chmod +x "$POST_SCRIPT"
 
 # --- Discover internal, physical disks ---
 internal_list="$($DISKUTIL list | $AWK '/\(internal, physical\)/ {print $1}')"
