@@ -50,7 +50,7 @@ fi
 /bin/echo "RAM: ${hardware_memory}"
 /bin/echo "Serial Number: ${serial}"
 /bin/echo "Current Boot Environment: $(sw_vers -productVersion)"
-/bin/echo "***************************************************"
+/bin/echo "***************************s************************"
 /bin/echo
 /bin/echo
 # =================== End System Information block ===================
