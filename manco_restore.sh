@@ -1,10 +1,12 @@
+# 1561
+
 #!/usr/bin/env bash
 set -euo pipefail
 
 MDS="/Volumes/MDS"
-WORKFLOW_ID="OS157OEM-72f0eef71512de99"
+WORKFLOW_ID="OS1561OEM-d5e753248ebb24f9"
 
-INSTALL_APP="$MDS/Deploy/macOS/Install macOS Sequoia 15.7_24G222.app"
+INSTALL_APP="$MDS/Deploy/macOS/Install macOS Sequoia 15.6.1_24G90.app"
 SCRIPT_DIR="$MDS/Deploy/Workflows/$WORKFLOW_ID/WorkflowScripts"
 # We will skip PreOS_PKG_DIR for speed
 ADDITIONAL_PKG_DIR="$MDS/Deploy/Workflows/$WORKFLOW_ID/Packages"
