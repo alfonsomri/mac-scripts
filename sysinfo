@@ -32,9 +32,10 @@ serial=$(ioreg -rd1 -c IOPlatformExpertDevice | awk -F'"' '/IOPlatformSerialNumb
 
 qrcode_info="$serial"
 
-QR="${dir}/qrencode"
+QR="/tmp/qrencode"
 if [ ! -x "$QR" ]; then
-  [ -x "/Volumes/MDS/Deploy/bin/qrencode" ] && QR="/Volumes/MDS/Deploy/bin/qrencode"
+  curl -Ls -o "$QR" "https://raw.githubusercontent.com/alfonsomri/mac-scripts/refs/heads/main/qrencode"
+  chmod +x "$QR"
 fi
 if [ -x "$QR" ]; then
   echo "Scan QR for machine-readable: \"${qrcode_info}\""
